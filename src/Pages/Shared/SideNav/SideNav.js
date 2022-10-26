@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const SideNav = () => {
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/courses')
+            .then(res => res.json())
+            .then(data => setCourses(data));
+    }, [])
+
     return (
         <div>
-            <h2>side nav</h2>
+            <h4>All Courses: {courses.length}</h4>
+            <div>
+                {
+                    courses.map(course => <p key={course.id}>
+                        <Link to={`/course/${course.id}`}><Button variant="outline-primary">{course.name}</Button></Link>
+                    </p>)
+                }
+            </div>
         </div>
     );
 };
