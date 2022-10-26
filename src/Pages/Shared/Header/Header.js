@@ -7,7 +7,7 @@ import logo from '../../../images/favicon-32x32.png';
 
 const Header = () => {
     return (
-        <Navbar className='mb-5' collapseOnSelect expand="lg" bg="primary" variant="dark">
+        <Navbar sticky="top" className='mb-5' collapseOnSelect expand="lg" bg="primary" variant="dark">
             <Container>
                 <Navbar.Brand href="#home"><img src={logo} alt="" />Learner's Choice</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
