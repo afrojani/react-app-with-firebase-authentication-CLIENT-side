@@ -1,11 +1,15 @@
 import React from 'react';
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import logo from '../../../images/favicon-32x32.png';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <Navbar sticky="top" className='mb-5' collapseOnSelect expand="lg" bg="primary" variant="dark">
             <Container>
@@ -18,12 +22,12 @@ const Header = () => {
                         <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
 
                     </Nav>
-                    {/* <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
+                    <Nav>
+                        <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             Dank memes
                         </Nav.Link>
-                    </Nav> */}
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
