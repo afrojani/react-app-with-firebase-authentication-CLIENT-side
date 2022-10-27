@@ -17,7 +17,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://assignment10-server-side-two.vercel.app/courses')
             },
             {
                 path: '/faq',
@@ -26,7 +26,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses/:id',
                 element: <Courses></Courses>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment10-server-side-two.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/blog',
@@ -43,7 +43,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/premium/:id',
                 element: <PrivateRoute><PremiumAccess></PremiumAccess></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/premium/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment10-server-side-two.vercel.app/premium/${params.id}`)
             },
         ]
     },
