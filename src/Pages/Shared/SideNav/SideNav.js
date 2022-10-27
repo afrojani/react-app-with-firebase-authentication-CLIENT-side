@@ -7,7 +7,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const SideNav = () => {
 
@@ -15,6 +15,8 @@ const SideNav = () => {
     // google sign in
 
     const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
+
 
     const handleGoogleSignIn = () => {
         providerSignIn(googleProvider)
@@ -24,6 +26,16 @@ const SideNav = () => {
             })
             .catch(error => console.log(error))
     }
+
+    const handleGitHubSignin = () => {
+        providerSignIn(gitHubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error))
+    }
+
 
     // for data loading from server
     const [courses, setCourses] = useState([]);
@@ -39,7 +51,7 @@ const SideNav = () => {
             <div className='mb-5'>
                 <DropdownButton id="dropdown-basic-button" title="Enroll Now">
                     <Dropdown.Item onClick={handleGoogleSignIn} eventKey="1" active>Sign in with <FaGoogle></FaGoogle></Dropdown.Item>
-                    <Dropdown.Item eventKey="2">Sign in with  <FaGithub></FaGithub></Dropdown.Item>
+                    <Dropdown.Item onClick={handleGitHubSignin} eventKey="2">Sign in with  <FaGithub></FaGithub></Dropdown.Item>
                 </DropdownButton>
             </div>
             <h4>All Courses:</h4>
