@@ -8,6 +8,7 @@ import { FaArrowAltCircleRight, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import logo from '../../../images/favicon-32x32.png';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -31,6 +32,9 @@ const Header = () => {
 
                     </Nav>
                     <Nav>
+
+
+
                         <Nav.Link href="#deets">
                             {
                                 user?.uid ?
@@ -54,6 +58,15 @@ const Header = () => {
 
                             }
                         </Nav.Link>
+
+                        <BootstrapSwitchButton
+                            checked={false}
+                            onlabel='Light'
+                            offlabel='Dark'
+                            onChange={(checked = 'boolean') => {
+                                this.setState({ isUserAdmin: checked })
+                            }}
+                        />
                     </Nav>
                 </Navbar.Collapse>
             </Container>
