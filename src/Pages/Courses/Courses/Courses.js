@@ -1,6 +1,7 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
+import { Button } from 'react-bootstrap';
 
 const Courses = () => {
     const course = useLoaderData();
@@ -14,6 +15,9 @@ const Courses = () => {
                         <h4>{course.title}</h4>
                         <p>{course.body}</p>
                         <h6>Course Duration: {course.time}</h6>
+                        <Link to='/premium'>
+                            <Button>Get Premium Access</Button>
+                        </Link>
 
                     </Card.Text>
                 </Card.Body>

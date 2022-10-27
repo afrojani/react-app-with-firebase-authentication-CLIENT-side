@@ -4,6 +4,10 @@ import AllCourses from "../../Pages/AllCourses/AllCourses";
 import Blog from "../../Pages/Blog/Blog/Blog";
 import Courses from "../../Pages/Courses/Courses/Courses";
 import Home from "../../Pages/Home/Home/Home";
+import PremiumAccess from "../../Pages/PremiumAccess/PremiumAccess";
+import Register from "../../Pages/SignIn/Register/Register";
+import SignIn from "../../Pages/SignIn/SignIn/SignIn";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -27,7 +31,19 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
-            }
+            },
+            {
+                path: '/signIn',
+                element: <SignIn></SignIn>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/premium',
+                element: <PrivateRoute><PremiumAccess></PremiumAccess></PrivateRoute>
+            },
         ]
     }
 ]);
