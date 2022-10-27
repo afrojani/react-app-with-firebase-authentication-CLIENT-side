@@ -15,7 +15,7 @@ const Courses = () => {
                         <h4>{course.title}</h4>
                         <p>{course.body}</p>
                         <h6>Course Duration: {course.time}</h6>
-                        <Link to='/premium'>
+                        <Link to={`/premium/${course.id}`}>
                             <Button>Get Premium Access</Button>
                         </Link>
 

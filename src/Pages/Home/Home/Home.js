@@ -8,7 +8,7 @@ const Home = () => {
     const allCourses = useLoaderData();
     return (
         <div>
-            <h2>this is home page.{allCourses.length}</h2>
+            <h2>Welcome to Our website.</h2>
             <Row sm={1} md={2}>
 
                 {

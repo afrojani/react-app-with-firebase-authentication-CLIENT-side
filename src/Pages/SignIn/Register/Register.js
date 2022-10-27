@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -25,12 +26,22 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch(error => {
                 console.log(error)
                 setError(error.message);
-            })
+            });
+    }
 
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.log(error));
     }
 
 
@@ -62,6 +73,7 @@ const Register = () => {
                 <Form.Text className="text-danger">
                     {error}
                 </Form.Text>
+                <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
             </Form>
         </div>
     );

@@ -42,7 +42,7 @@ const SideNav = () => {
                     <Dropdown.Item eventKey="2">Sign in with  <FaGithub></FaGithub></Dropdown.Item>
                 </DropdownButton>
             </div>
-            <h4>All Courses: {courses.length}</h4>
+            <h4>All Courses:</h4>
             <div>
                 {
                     courses.map(course => <p key={course.id}>
